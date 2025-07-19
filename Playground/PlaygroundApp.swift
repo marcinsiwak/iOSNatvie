@@ -11,7 +11,10 @@ import SwiftUI
 struct PlaygroundApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            let interactor = ContentInteractor()
+            let router = ContentRouter()
+            let presenter = ContentPresenter(interactor: interactor, router: router)
+            ContentView(presenter: presenter)
         }
     }
 }
