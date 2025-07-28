@@ -8,11 +8,11 @@
 import Foundation
 
 protocol SecondInteractorProtocol {
-    func fetchFarawell() -> Greeting
+    func fetchFarewell() -> Farewell
 }
 
 class SecondInteractor: SecondInteractorProtocol {
-    func fetchFarawell() -> Farewell {
+    func fetchFarewell() -> Farewell {
         return Farewell(message: "Bye, world!")
     }
 }

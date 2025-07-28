@@ -8,26 +8,23 @@
 import SwiftUI
 
 struct SecondView: View {
-    @ObservedObject var presenter: SecondPresenter
+    @StateObject private var viewModel = SecondViewModel()
 
     var body: some View {
             VStack {
                 Image(systemName: "globe")
                     .imageScale(.large)
                     .foregroundStyle(.tint)
-                Text(presenter.farawell)
+                Text(viewModel.farewell)
             }
             .padding()
             .onAppear {
-                presenter.onAppear()
+                viewModel.onAppear()
             }
     }
     
 }
 
 #Preview {
-    let interactor = SecondInteractor()
-    let router = SecondRouter()
-    let presenter = SecondPresenter(interactor: interactor, router: router)
-    SecondView(presenter: presenter)
+    SecondView()
 }

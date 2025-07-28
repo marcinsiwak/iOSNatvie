@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var presenter: ContentPresenter
+    @StateObject private var viewModel = ContentViewModel()
 
     var body: some View {
         NavigationStack {
@@ -17,24 +17,20 @@ struct ContentView: View {
                 Image(systemName: "globe")
                     .imageScale(.large)
                     .foregroundStyle(.tint)
-                Text(presenter.greetingText)
+                Text(viewModel.greetingText)
             }
             .padding()
             .onAppear {
-                presenter.onAppear()
+                viewModel.onAppear()
             }
             
             NavigationLink("Go to Second", destination: SecondView())
                 .padding()
                 .buttonStyle(.borderedProminent)
         }
-        }
-    
+    }
 }
 
 #Preview {
-    let interactor = ContentInteractor()
-    let router = ContentRouter()
-    let presenter = ContentPresenter(interactor: interactor, router: router)
-    ContentView(presenter: presenter)
+    ContentView()
 }
