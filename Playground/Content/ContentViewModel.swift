@@ -9,11 +9,13 @@ import Foundation
 
 class ContentViewModel: ObservableObject {
     private let interactor: ContentInteractorProtocol
+    private let navigator: Navigator
     
     @Published var greetingText: String = ""
     
-    init(interactor: ContentInteractorProtocol = ContentInteractor()) {
+    init(interactor: ContentInteractorProtocol = ContentInteractor(), navigator: Navigator) {
         self.interactor = interactor
+        self.navigator = navigator
     }
     
     func onAppear() {
