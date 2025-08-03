@@ -9,9 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var viewModel = DIContainer.shared.resolve(ContentViewModel.self)!
-    
+    @StateObject private var navigator = DIContainer.shared.resolve(Navigator.self)!
+
     var body: some View {
-        NavigationStack(path: viewModel.navigationPath) {
+        NavigationStack(path: $navigator.navigationPath) {
             VStack {
                 Image(systemName: "globe")
                     .imageScale(.large)

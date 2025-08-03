@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SecondView: View {
-    @StateObject private var viewModel = SecondViewModel()
+    @StateObject private var viewModel = DIContainer.shared.resolve(SecondViewModel.self)!
 
     var body: some View {
             VStack {

@@ -28,9 +28,8 @@ class DIContainer {
             return ContentInteractor()
         }
         
-        container.register(Navigator.self) { _ in
-            return Navigator()
-        }
+        container.register(Navigator.self) { _ in Navigator() }
+            .inObjectScope(.container)
         
         // Second screen dependencies
         container.register(SecondViewModel.self) { r in
