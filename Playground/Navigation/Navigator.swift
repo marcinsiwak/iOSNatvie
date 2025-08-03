@@ -10,6 +10,7 @@ import SwiftUI
 enum NavigationDestination: Hashable {
     case content(text: String)
     case secondScreen
+    case loginScreen
 }
 
 class Navigator: ObservableObject {

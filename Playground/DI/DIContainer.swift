@@ -39,6 +39,15 @@ class DIContainer {
         container.register(SecondInteractorProtocol.self) { _ in
             return SecondInteractor()
         }
+        
+        // Login dependencies
+        container.register(LoginViewModel.self) { r in
+            return LoginViewModel(interactor: r.resolve(LoginInteractorProtocol.self)!)
+        }
+        
+        container.register(LoginInteractorProtocol.self) { _ in
+            return LoginInteractor()
+        }
     }
     
     func resolve<T>(_ type: T.Type) -> T? {

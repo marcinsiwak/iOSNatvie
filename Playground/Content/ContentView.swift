@@ -21,6 +21,9 @@ struct ContentView: View {
                 Button("Go to Second Screen") {
                     viewModel.onButtonClick()
                 }
+                Button("Go to Login") {
+                    navigator.navigate(to: .loginScreen)
+                }
             }
             .padding()
             .onAppear {
@@ -32,6 +35,8 @@ struct ContentView: View {
                     Text("Content: \(text)")
                 case .secondScreen:
                     SecondView()
+                case .loginScreen:
+                    LoginView()
                 }
             }
         }
