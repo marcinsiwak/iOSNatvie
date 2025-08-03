@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class ContentViewModel: ObservableObject {
     private let interactor: ContentInteractorProtocol
@@ -21,5 +22,16 @@ class ContentViewModel: ObservableObject {
     func onAppear() {
         let greeting = interactor.fetchGreeting()
         greetingText = greeting.message
+    }
+    
+    func onButtonClick() {
+        navigator.navigate(to: .secondScreen)
+    }
+    
+    var navigationPath: Binding<NavigationPath> {
+        Binding(
+            get: { self.navigator.navigationPath },
+            set: { self.navigator.navigationPath = $0 }
+        )
     }
 }

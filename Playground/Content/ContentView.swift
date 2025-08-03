@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var viewModel = ContentViewModel()
+    @StateObject private var viewModel = DIContainer.shared.resolve(ContentViewModel.self)!
     
     var body: some View {
-        NavigationStack(path: $navigator.navigationPath) {
+        NavigationStack(path: viewModel.navigationPath) {
             VStack {
                 Image(systemName: "globe")
                     .imageScale(.large)
                     .foregroundStyle(.tint)
                 Text(viewModel.greetingText)
                 Button("Go to Second Screen") {
-                    viewModel.navigate(to: .secondScreen)
+                    viewModel.onButtonClick()
                 }
             }
             .padding()
@@ -33,9 +33,7 @@ struct ContentView: View {
                     SecondView()
                 }
             }
-            
         }
-        
     }
 }
 
